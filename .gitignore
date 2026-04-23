@@ -28,3 +28,19 @@ Homestead.json
 .env.production
 .phpactor.json
 auth.json
+
+# Compiled Blade views
+/storage/framework/views/
+
+# Logs
+storage/logs/
+*.log
+
+# SQLite database (use .env for real DB config)
+/database/database.sqlite
+/database/database.sqlite-shm
+/database/database.sqlite-wal
+
+# Bootstrap cache
+/bootstrap/cache/*.php
+
