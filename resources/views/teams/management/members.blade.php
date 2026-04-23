@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
                 👥 {{ $team->name }} — Manage Members
             </h2>
             <a href="{{ route('management.view-team', $team) }}" class="text-sm text-indigo-600 hover:underline">
@@ -15,14 +15,14 @@
 
             {{-- Flash messages --}}
             @if(session('success'))
-                <div class="bg-green-50 border border-green-200 text-green-800 rounded p-4">{{ session('success') }}</div>
+                <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 text-green-800 dark:text-green-300 rounded p-4">{{ session('success') }}</div>
             @endif
             @if(session('error'))
-                <div class="bg-red-50 border border-red-200 text-red-800 rounded p-4">{{ session('error') }}</div>
+                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 text-red-800 dark:text-red-300 rounded p-4">{{ session('error') }}</div>
             @endif
 
             {{-- Add Member --}}
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Add Member</h3>
                     <form method="POST" action="{{ route('teams.members.store', $team) }}" class="flex gap-3">
@@ -43,24 +43,24 @@
             </div>
 
             {{-- Members Table --}}
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     <h3 class="text-lg font-semibold text-gray-800 mb-4">Current Members</h3>
                     <div class="overflow-x-auto">
                         <table class="min-w-full divide-y divide-gray-200">
                             <thead class="bg-gray-50">
                                 <tr>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Name</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Email</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Role</th>
-                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase">Actions</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Name</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Email</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Role</th>
+                                    <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase">Actions</th>
                                 </tr>
                             </thead>
-                            <tbody class="bg-white divide-y divide-gray-200">
+                            <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                                 @forelse($members as $member)
                                     <tr>
-                                        <td class="px-4 py-3 text-sm text-gray-900">{{ $member->name }}</td>
-                                        <td class="px-4 py-3 text-sm text-gray-500">{{ $member->email }}</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">{{ $member->name }}</td>
+                                        <td class="px-4 py-3 text-sm text-gray-500 dark:text-gray-400">{{ $member->email }}</td>
                                         <td class="px-4 py-3 text-sm">
                                             <form method="POST" action="{{ route('teams.members.update', [$team, $member]) }}"
                                                   class="flex items-center gap-2">

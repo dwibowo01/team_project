@@ -10,7 +10,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
                 {{ $icon }} {{ $team->name }} — Groups
             </h2>
             <a href="{{ $backRoute }}" class="text-sm text-{{ $color }}-600 hover:underline">← Dashboard</a>
@@ -22,16 +22,16 @@
 
             {{-- Flash messages --}}
             @if(session('success'))
-                <div class="bg-green-50 border border-green-200 text-green-800 rounded p-4">{{ session('success') }}</div>
+                <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 text-green-800 dark:text-green-300 rounded p-4">{{ session('success') }}</div>
             @endif
             @if(session('error'))
-                <div class="bg-red-50 border border-red-200 text-red-800 rounded p-4">{{ session('error') }}</div>
+                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 text-red-800 dark:text-red-300 rounded p-4">{{ session('error') }}</div>
             @endif
 
             {{-- Create Group --}}
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
-                    <h3 class="text-base font-semibold text-gray-800 mb-4">Create New Group</h3>
+                    <h3 class="text-base font-semibold text-gray-800 dark:text-gray-100 mb-4">Create New Group</h3>
                     <form method="POST" action="{{ route('teams.groups.store', $team) }}" class="space-y-4">
                         @csrf
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -62,9 +62,9 @@
             </div>
 
             {{-- Groups List --}}
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
-                    <h3 class="text-base font-semibold text-gray-800 mb-4">
+                    <h3 class="text-base font-semibold text-gray-800 dark:text-gray-100 mb-4">
                         Groups ({{ $groups->count() }})
                     </h3>
                     @forelse($groups as $group)
