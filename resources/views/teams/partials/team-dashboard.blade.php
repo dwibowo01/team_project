@@ -13,7 +13,7 @@
 <x-app-layout>
     <x-slot name="header">
         <div class="flex items-center justify-between">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-100 leading-tight">
                 {{ $icon }} {{ $team->name }} Dashboard
             </h2>
             @if($userRole)
@@ -29,10 +29,10 @@
 
             {{-- Flash messages --}}
             @if(session('success'))
-                <div class="bg-green-50 border border-green-200 text-green-800 rounded p-4">{{ session('success') }}</div>
+                <div class="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-700 text-green-800 dark:text-green-300 rounded p-4">{{ session('success') }}</div>
             @endif
             @if(session('error'))
-                <div class="bg-red-50 border border-red-200 text-red-800 rounded p-4">{{ session('error') }}</div>
+                <div class="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-700 text-red-800 dark:text-red-300 rounded p-4">{{ session('error') }}</div>
             @endif
 
             {{-- Quick Nav --}}
@@ -66,15 +66,15 @@
 
             {{-- My Groups --}}
             @if($userGroups->isNotEmpty())
-                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                     <div class="p-6">
-                        <h3 class="text-base font-semibold text-gray-800 mb-3">My Groups</h3>
+                        <h3 class="text-base font-semibold text-gray-800 dark:text-gray-100 mb-3">My Groups</h3>
                         <div class="flex flex-wrap gap-2">
                             @foreach($userGroups as $group)
                                 <span class="bg-{{ $color }}-100 text-{{ $color }}-700 text-sm px-3 py-1 rounded-full">
                                     {{ $group->name ?? $group->code }}
                                     @if($group->pivot->global ?? false)
-                                        <span class="text-xs ml-1 text-gray-500">(global)</span>
+                                        <span class="text-xs ml-1 text-gray-500 dark:text-gray-400">(global)</span>
                                     @endif
                                 </span>
                             @endforeach
@@ -84,7 +84,7 @@
             @endif
 
             {{-- Recent Members --}}
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6">
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="text-base font-semibold text-gray-800">Team Members</h3>
@@ -102,8 +102,8 @@
                             <tbody class="bg-white divide-y divide-gray-200">
                                 @forelse($members->take(5) as $member)
                                     <tr>
-                                        <td class="px-4 py-3 text-sm text-gray-900">{{ $member->name }}</td>
-                                        <td class="px-4 py-3 text-sm text-gray-500">{{ $member->email }}</td>
+                                        <td class="px-4 py-3 text-sm text-gray-900 dark:text-gray-100">{{ $member->name }}</td>
+                                        <td class="px-4 py-3 text-sm text-gray-500 dark:text-gray-400">{{ $member->email }}</td>
                                         <td class="px-4 py-3 text-sm">
                                             @php $role = $team->userRole($member); @endphp
                                             @if($role)

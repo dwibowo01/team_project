@@ -15,7 +15,8 @@ return new class () extends Migration {
             $table->id();
             $table->foreignId(Config::get('teams.foreign_keys.team_id', 'team_id'))->constrained(Config::get('teams.tables.teams'))->cascadeOnUpdate()->restrictOnDelete();
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->restrictOnDelete();
-            $table->foreignId('role_id')->constrained('roles')->cascadeOnUpdate()->restrictOnDelete();
+            $table->foreignId('role_id')->nullable()->constrained('roles')->cascadeOnUpdate()->nullOnDelete();
+            $table->string('role')->nullable(); // Jetstream compatibility
             $table->timestamps();
 
             $table->unique([Config::get('teams.foreign_keys.team_id', 'team_id'), 'user_id']);

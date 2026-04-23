@@ -23,5 +23,8 @@ class DatabaseSeeder extends Seeder
 
         // Seed the four teams with roles and default groups
         $this->call(TeamSeeder::class);
+
+        // Seed Spatie roles and permissions per team
+        $this->call(RoleSeeder::class);
     }
 }
